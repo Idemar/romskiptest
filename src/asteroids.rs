@@ -6,7 +6,7 @@ use rand::prelude::*;
 use crate::{
     asset_loader::SceneAssets,
     bevegelse::{Akselerasjon, BevegeligObjekt, Hastighet},
-    oppdag_kollisjon::kolliderer,
+    oppdag_kollisjon::kollidere,
 };
 
 const HASTIGHET_SKALERER: f32 = 5.0;
