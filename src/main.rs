@@ -27,6 +27,6 @@ fn main() {
         .add_plugins(RomskipPlugin)
         .add_plugins(KameraPlugin)
         .add_plugins(AssetLoaderPlugin)
-        .add_plugins(AsteroidsPlugin)
+        .add_plugins(AsteroidPlugin)
         .run();
 }

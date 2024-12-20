@@ -3,10 +3,10 @@ use std::ops::Range;
 use bevy::prelude::*;
 use rand::prelude::*;
 
-use crates::{
+use crate::{
     asset_loader::SceneAssets,
     bevegelse::{Akselerasjon, BevegeligObjekt, Hastighet},
-    kollisjondeteksjon::kolliderer,
+    oppdag_kollisjon::kolliderer,
 };
 
 const HASTIGHET_SKALERER: f32 = 5.0;

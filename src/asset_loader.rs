@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 
 #[derive(Resource, Debug, Default)]
-pub struct SeneAsset {
+pub struct SceneAssets {
     pub asteroid: Handle<Scene>,
     pub romskip: Handle<Scene>,
     pub missiles: Handle<Scene>,
