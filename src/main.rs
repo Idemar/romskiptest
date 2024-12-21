@@ -4,6 +4,7 @@ mod kamera;
 mod romskip;
 mod asset_loader;
 mod asteroids;
+mod oppdag_kollisjon;
 
 use bevy::prelude::*;
 
@@ -13,6 +14,7 @@ use kamera::KameraPlugin;
 use romskip::RomskipPlugin;
 use asset_loader::AssetLoaderPlugin;
 use asteroids::AsteroidPlugin;
+use oppdag_kollisjon::Oppdag_kollisjonPlugin;
 
 fn main() {
     App::new()
@@ -28,5 +30,6 @@ fn main() {
         .add_plugins(KameraPlugin)
         .add_plugins(AssetLoaderPlugin)
         .add_plugins(AsteroidPlugin)
+        .add_plugins(Oppdag_kollisjonPlugin)
         .run();
 }

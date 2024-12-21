@@ -1,10 +1,11 @@
-use bevy::[prelude::*, utils::HashMap];
+use bevy::{prelude::*, utils::HashMap};
 
 #[derive(Component, Debug)]
-pub stuct Kollidere {
+pub struct Kollidere {
     pub radius: f32,
     pub kolliderer_entities: Vec<Entity>,
 }
+
 impl Kollidere {
     pub fn new(radius: f32) -> Self {
         Self {
@@ -17,8 +18,8 @@ impl Kollidere {
 pub struct Oppdag_kollisjonPlugin;
 
 impl Plugin for Oppdag_kollisjonPlugin {
-    fn build(&self, app: &mut AppBuilder) {
-        app.add_system(oppdag_kollisjon.system());
+    fn build(&self, app: &mut App) {
+        app.add_systems(Update, oppdag_kollisjon);
     }
 }
 
@@ -29,8 +30,8 @@ fn oppdag_kollisjon(mut query: Query<(Entity, &GlobalTransform, &mut Kollidere)>
         for (entity_b, transform_b, Kollidere_b) in query.iter() {
             if entity_a != entity_b {
                 let avstand = transform_a
-                    .translation
-                    .distance(transform_b.translation);
+                    .translation()
+                    .distance(transform_b.translation());
                 if avstand < Kollidere_a.radius + Kollidere_b.radius {
                     kolliderer_entities
                         .entry(entity_a)
@@ -40,7 +41,7 @@ fn oppdag_kollisjon(mut query: Query<(Entity, &GlobalTransform, &mut Kollidere)>
             }
         }
     }
-    for (Entity, _, mut Kollidere) in query.iter_mut() {
+    for (entity, _, mut Kollidere) in query.iter_mut() {
         Kollidere.kolliderer_entities.clear();
         if let Some(kollisjons) = kolliderer_entities.get(&entity) {
             Kollidere.kolliderer_entities.extend(kollisjons.iter().copied());
